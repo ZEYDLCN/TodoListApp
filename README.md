@@ -23,7 +23,7 @@ Basit ama sağlam bir Yapılacaklar Listesi uygulamasıdır. ASP.NET Core ile N-
 *   [Türkçe](#türkçe)
     *   [Özellikler](#özellikler)
     *   [Teknolojiler ve Temel Kavramlar](#teknolojiler-ve-temel-kavramlar)
-    *   [Proje Yapısı](#proje-yapısı)
+    *   [Proje Yapısı](#proje-yapısı-1)
     *   [Başlarken](#başlarken-1)
         *   [Ön Gereksinimler](#ön-gereksinimler)
         *   [Kurulum](#kurulum)
@@ -71,27 +71,36 @@ Basit ama sağlam bir Yapılacaklar Listesi uygulamasıdır. ASP.NET Core ile N-
 Use code with caution.
 Markdown
 TodoListApp.sln
-├── TodoListApp.API # ASP.NET Core Web API (Startup Project)
-│ ├── Controllers
-│ │ └── TodoController.cs
-│ ├── appsettings.json
-│ └── Program.cs
-├── TodoListApp.Business # Business Logic Layer
-│ ├── Interfaces
-│ │ └── ITodoService.cs
-│ └── Services
-│ └── TodoService.cs
-├── TodoListApp.DataAccess # Data Access Layer
-│ ├── Context
-│ │ └── AppDbContext.cs
-│ ├── Interfaces
-│ │ └── ITodoRepository.cs
-│ ├── Migrations # EF Core Migrations
-│ └── Repositories
-│ └── TodoRepository.cs
-├── TodoListApp.Entities # Core Entities/Models
-│ └── TodoItem.cs
-└── README.md
+├───TodoListApp.API
+│ ├───Controllers
+│ │ TodoController.cs
+│ ├───Properties
+│ │ launchSettings.json
+│ ├───appsettings.Development.json
+│ ├───appsettings.json
+│ ├───Program.cs
+│ └───TodoListApp.API.csproj
+├───TodoListApp.Business
+│ ├───Interfaces
+│ │ ITodoService.cs
+│ ├───Services
+│ │ TodoService.cs
+│ └───TodoListApp.Business.csproj
+├───TodoListApp.DataAccess
+│ ├───Context
+│ │ AppDbContext.cs
+│ ├───Interfaces
+│ │ ITodoRepository.cs
+│ ├───Migrations
+│ │ XXXXXXXXXXXXXX_InitialCreate.cs
+│ │ AppDbContextModelSnapshot.cs
+│ ├───Repositories
+│ │ TodoRepository.cs
+│ └───TodoListApp.DataAccess.csproj
+├───TodoListApp.Entities
+│ │ TodoItem.cs
+│ └───TodoListApp.Entities.csproj
+└───README.md
 ### Getting Started
 
 #### Prerequisites
@@ -141,21 +150,21 @@ To create/update the database schema:
     3.  Ensure `TodoListApp.API` is the **Startup Project** (Right-click on `TodoListApp.API` in Solution Explorer > Set as Startup Project).
     4.  Run:
         ```powershell
-        Add-Migration YourMigrationName -OutputDir DataAccess/Migrations 
+        Add-Migration YourMigrationName -OutputDir Migrations 
+        # (Or -OutputDir DataAccess/Migrations if you used that subfolder)
         Update-Database
         ```
-        *(Note: If you encountered issues with `-OutputDir DataAccess/Migrations`, you might have used just `-OutputDir Migrations` or no `-OutputDir` for the default `Migrations` folder directly under `TodoListApp.DataAccess`)*
 
 *   **Using .NET CLI (from the `TodoListApp.API` directory):**
     ```bash
     # Ensure you are in the TodoListApp.API project directory
     cd TodoListApp.API 
-    dotnet ef migrations add YourMigrationName --project ../TodoListApp.DataAccess -o DataAccess/Migrations 
+    dotnet ef migrations add YourMigrationName --project ../TodoListApp.DataAccess -o Migrations
+    # (Or -o DataAccess/Migrations if you used that subfolder)
     dotnet ef database update --project ../TodoListApp.DataAccess
     cd .. 
     # Go back to solution root
     ```
-    *(Adjust `-o DataAccess/Migrations` if your migrations folder structure is different, e.g., `-o Migrations`)*
 
 #### Running the API
 
@@ -242,27 +251,38 @@ Distributed under the MIT License. See `LICENSE` file for more information (if y
 ### Proje Yapısı
 Use code with caution.
 TodoListApp.sln
-├── TodoListApp.API # ASP.NET Core Web API (Başlangıç Projesi)
-│ ├── Controllers
-│ │ └── TodoController.cs
-│ ├── appsettings.json
-│ └── Program.cs
-├── TodoListApp.Business # İş Mantığı Katmanı
-│ ├── Interfaces
-│ │ └── ITodoService.cs
-│ └── Services
-│ └── TodoService.cs
-├── TodoListApp.DataAccess # Veri Erişim Katmanı
-│ ├── Context
-│ │ └── AppDbContext.cs
-│ ├── Interfaces
-│ │ └── ITodoRepository.cs
-│ ├── Migrations # EF Core Migration'ları
-│ └── Repositories
-│ └── TodoRepository.cs
-├── TodoListApp.Entities # Temel Varlıklar/Modeller
-│ └── TodoItem.cs
-└── README.md
+├───TodoListApp.API
+│ ├───Controllers
+│ │ TodoController.cs
+│ ├───Properties
+│ │ launchSettings.json
+│ ├───appsettings.Development.json
+│ ├───appsettings.json
+│ ├───Program.cs
+│ └───TodoListApp.API.csproj
+├───TodoListApp.Business
+│ ├───Interfaces
+│ │ ITodoService.cs
+│ ├───Services
+│ │ TodoService.cs
+│ └───TodoListApp.Business.csproj
+├───TodoListApp.DataAccess
+│ ├───Context
+│ │ AppDbContext.cs
+│ ├───Interfaces
+│ │ ITodoRepository.cs
+│ ├───Migrations // Migration dosyalarınız burada olacak
+│ │ XXXXXXXXXXXXXX_InitialCreate.cs // Örnek migration dosyası
+│ │ AppDbContextModelSnapshot.cs // Model anlık görüntüsü
+│ ├───Repositories
+│ │ TodoRepository.cs
+│ └───TodoListApp.DataAccess.csproj
+├───TodoListApp.Entities
+│ │ TodoItem.cs
+│ └───TodoListApp.Entities.csproj
+└───README.md
+*(Not: `XXXXXXXXXXXXXX_InitialCreate.cs` dosyasındaki `X`'ler, migration oluşturulduğunda otomatik olarak atanan zaman damgasını temsil eder.)*
+
 ### Başlarken
 
 #### Ön Gereksinimler
@@ -312,21 +332,21 @@ Veritabanı şemasını oluşturmak/güncellemek için:
     3.  `TodoListApp.API`'nin **Startup Project** olduğundan emin olun (Solution Explorer'da `TodoListApp.API`'ye sağ tıklayın > Set as Startup Project).
     4.  Çalıştırın:
         ```powershell
-        Add-Migration SeninMigrationAdin -OutputDir DataAccess/Migrations
+        Add-Migration SeninMigrationAdin -OutputDir Migrations 
+        # (Veya -OutputDir DataAccess/Migrations eğer bu alt klasörü kullandıysanız)
         Update-Database
         ```
-        *(Not: `-OutputDir DataAccess/Migrations` ile sorun yaşadıysanız, doğrudan `TodoListApp.DataAccess` altında varsayılan `Migrations` klasörü için sadece `-OutputDir Migrations` veya hiç `-OutputDir` kullanmamış olabilirsiniz)*
 
 *   **.NET CLI Kullanarak (`TodoListApp.API` dizininden):**
     ```bash
     # TodoListApp.API proje dizininde olduğunuzdan emin olun
     cd TodoListApp.API
-    dotnet ef migrations add SeninMigrationAdin --project ../TodoListApp.DataAccess -o DataAccess/Migrations
+    dotnet ef migrations add SeninMigrationAdin --project ../TodoListApp.DataAccess -o Migrations
+    # (Veya -o DataAccess/Migrations eğer bu alt klasörü kullandıysanız)
     dotnet ef database update --project ../TodoListApp.DataAccess
     cd .. 
     # Çözüm kök dizinine geri dön
     ```
-    *(Migration klasör yapınız farklıysa `-o DataAccess/Migrations` kısmını ayarlayın, örneğin `-o Migrations`)*
 
 #### API'yi Çalıştırma
 
