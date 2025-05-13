@@ -67,40 +67,7 @@ Basit ama sağlam bir Yapılacaklar Listesi uygulamasıdır. ASP.NET Core ile N-
 *   **Data Transfer Objects (DTOs)**: For decoupling API contracts from domain models.
 *   **Async/Await**: For non-blocking I/O operations.
 
-### Project Structure
-Use code with caution.
-Markdown
-TodoListApp.sln
-├───TodoListApp.API
-│ ├───Controllers
-│ │ TodoController.cs
-│ ├───Properties
-│ │ launchSettings.json
-│ ├───appsettings.Development.json
-│ ├───appsettings.json
-│ ├───Program.cs
-│ └───TodoListApp.API.csproj
-├───TodoListApp.Business
-│ ├───Interfaces
-│ │ ITodoService.cs
-│ ├───Services
-│ │ TodoService.cs
-│ └───TodoListApp.Business.csproj
-├───TodoListApp.DataAccess
-│ ├───Context
-│ │ AppDbContext.cs
-│ ├───Interfaces
-│ │ ITodoRepository.cs
-│ ├───Migrations
-│ │ XXXXXXXXXXXXXX_InitialCreate.cs
-│ │ AppDbContextModelSnapshot.cs
-│ ├───Repositories
-│ │ TodoRepository.cs
-│ └───TodoListApp.DataAccess.csproj
-├───TodoListApp.Entities
-│ │ TodoItem.cs
-│ └───TodoListApp.Entities.csproj
-└───README.md
+
 ### Getting Started
 
 #### Prerequisites
@@ -248,40 +215,7 @@ Distributed under the MIT License. See `LICENSE` file for more information (if y
 *   **Veri Transfer Nesneleri (DTO'lar)**: API sözleşmelerini alan modellerinden ayırmak için.
 *   **Async/Await**: Engellemeyen G/Ç işlemleri için.
 
-### Proje Yapısı
-Use code with caution.
-TodoListApp.sln
-├───TodoListApp.API
-│ ├───Controllers
-│ │ TodoController.cs
-│ ├───Properties
-│ │ launchSettings.json
-│ ├───appsettings.Development.json
-│ ├───appsettings.json
-│ ├───Program.cs
-│ └───TodoListApp.API.csproj
-├───TodoListApp.Business
-│ ├───Interfaces
-│ │ ITodoService.cs
-│ ├───Services
-│ │ TodoService.cs
-│ └───TodoListApp.Business.csproj
-├───TodoListApp.DataAccess
-│ ├───Context
-│ │ AppDbContext.cs
-│ ├───Interfaces
-│ │ ITodoRepository.cs
-│ ├───Migrations // Migration dosyalarınız burada olacak
-│ │ XXXXXXXXXXXXXX_InitialCreate.cs // Örnek migration dosyası
-│ │ AppDbContextModelSnapshot.cs // Model anlık görüntüsü
-│ ├───Repositories
-│ │ TodoRepository.cs
-│ └───TodoListApp.DataAccess.csproj
-├───TodoListApp.Entities
-│ │ TodoItem.cs
-│ └───TodoListApp.Entities.csproj
-└───README.md
-*(Not: `XXXXXXXXXXXXXX_InitialCreate.cs` dosyasındaki `X`'ler, migration oluşturulduğunda otomatik olarak atanan zaman damgasını temsil eder.)*
+
 
 ### Başlarken
 
